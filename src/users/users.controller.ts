@@ -6,13 +6,13 @@ import { CreateUserDto } from './dtos/createUserDto.dto';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Get('get-users')
-  async getUsers(){
-    return this.usersService.getUsers();
+  @Get('get-all-users')
+  async getAllUsers() {
+    return this.usersService.getAllUsers({});
   }
 
   @Post('create-user')
-  async createUser(@Body() data: CreateUserDto){
-    return this.usersService.createUser(data)
+  async createUser(@Body() data: CreateUserDto) {
+    return this.usersService.createUser(data);
   }
 }
