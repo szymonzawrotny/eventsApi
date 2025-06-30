@@ -13,6 +13,10 @@ async function bootstrap() {
       maxAge: 24 * 60 * 60 * 1000,
     }),
   );
-  await app.listen(process.env.PORT ?? 3000);
+  app.enableCors({
+    origin: true, // Twój front
+    credentials: true, // pozwala na ciasteczka
+  });
+  await app.listen(5000,'0.0.0.0');
 }
 bootstrap();
