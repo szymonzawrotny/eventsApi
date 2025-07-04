@@ -14,8 +14,8 @@ async function bootstrap() {
     }),
   );
   app.enableCors({
-    origin: true, // Twój front
-    credentials: true, // pozwala na ciasteczka
+    origin: true, 
+    credentials: true, 
   });
   await app.listen(5000,'0.0.0.0');
 }
