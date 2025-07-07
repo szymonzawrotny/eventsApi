@@ -1,14 +1,17 @@
+import { Prisma } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dtos/createUserDto.dto';
 import * as bcrypt from 'bcrypt';
+import { UserEntity } from 'src/users/user.entity';
 
 @Injectable()
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  async getAllUsers(data: any) {
-    return this.prisma.user.findMany(data);
+  async getAllUsers(data: Prisma.UserFindManyArgs) {
+    const users = await this.prisma.user.findMany(data);
+    return users.map((user) => new UserEntity(user));
   }
 
   async getUser(email: string) {
@@ -23,5 +26,9 @@ export class UsersService {
     return this.prisma.user.create({
       data: { ...rest, password: hashedPassword },
     });
+  }
+
+  showUser(userId: number){
+    return userId;
   }
 }
