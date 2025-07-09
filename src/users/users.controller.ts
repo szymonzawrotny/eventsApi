@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dtos/createUserDto.dto';
-import { AuthGuard } from 'src/guards/auth.guard';
-import { GetUser } from 'src/decorators/get-user.decorator';
+import { AuthGuard } from 'src/common/guards/auth.guard';
+import { GetUser } from 'src/common/decorators/get-user.decorator';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('users')
