@@ -30,7 +30,7 @@ export class UsersController {
 
   @UseGuards(AuthGuard)
   @Get('show-user')
-  showUser(@GetUser() user) {
+  async showUser(@GetUser() user) {
     return this.usersService.showUser(user.id);
   }
 }
